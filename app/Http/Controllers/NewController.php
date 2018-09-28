@@ -91,6 +91,7 @@ class NewController extends Controller
 
     public function show_id($id){
         return view('hello')->with('id',$id);
+        //second method
         //return view('hello',compact('id',$id));
     }
 }

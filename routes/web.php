@@ -34,6 +34,7 @@ Route::get('/news/{id}','NewController@show_id');
 
 //只處理單個行為的話，就可以使用__invoke的方法,必須使用__invoke，否則出現Invalid route action
 Route::get('user/{id}','ShowProfile');
+Route::get('profile', 'UserController@show')->middleware('auth');
 
 
 Route::get('/insert',function(){
