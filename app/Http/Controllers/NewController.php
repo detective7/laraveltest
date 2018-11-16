@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\News;
 
 class NewController extends Controller
 {
@@ -13,8 +14,8 @@ class NewController extends Controller
      */
     public function index()
     {
-        //
-        return 'newest page';
+        $news = News::all();
+        return view('news',compact('news'));
     }
 
     /**
@@ -90,8 +91,21 @@ class NewController extends Controller
     }
 
     public function show_id($id){
-        return view('hello')->with('id',$id);
+        //return view('hello')->with('id',$id);
         //second method
         //return view('hello',compact('id',$id));
+        $new = News::find($id);
+        return view('new',compact('new'));
+    }
+
+    public function title(){
+        $title = 'article title';
+        $intro = 'article introduction';
+        $first = true;
+        $logined = true;
+        $news = News::all();
+        $names = ['a','b','c','d','e','f','g'];
+        return view('article.title',compact('title','intro','first','names','logined','news'));
+        // return view('articles.lists',['title'=>$title,'intro'=>$intro]);
     }
 }
